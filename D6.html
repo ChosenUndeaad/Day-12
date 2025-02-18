@@ -85,7 +85,8 @@
       */
 
       const changeTitle = function (newTitle) {
-        document.getElementsByTagName("h1")[0].innerText = newTitle;
+        const h1 = document.getElementsByTagName("h1")[0];
+        h1.innerText = newTitle;
       };
 
       changeTitle("New Title");
@@ -95,7 +96,8 @@
       */
 
       const addClassToTitle = function (myHeading) {
-        document.getElementsByTagName("h1")[0].classList.add(myHeading);
+        const h1 = document.getElementsByTagName("h1")[0];
+        h1.classList.add(myHeading);
       };
 
       addClassToTitle("myHeading");
@@ -105,7 +107,10 @@
         */
 
       const changePcontent = function (newText) {
-        document.getElementsByTagName("p")[0].innerText = newText;
+        const text = document.querySelectorAll("div p");
+        for (let i = 0; i < text.length; i++) {
+          text[i].innerText = newText;
+        }
       };
 
       changePcontent("This is the new text in P");
@@ -121,7 +126,6 @@
         }
       };
 
-      // Esempio di utilizzo
       changeUrls("https://www.google.com");
 
       /* ESERCIZIO 5
@@ -233,7 +237,20 @@
         Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
       */
 
-      const changeColorWithRandom = function () {};
+      const changeColorWithRandom = function () {
+        const colorChanger = document.getElementById("changeMyColor");
+        // let randomColor =
+        //   '#' + Math.floor(Math.random() * 16777215).toString(16)
+        // colorChanger.style.color = randomColor
+        const randomColor = `rgb(${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )})`;
+        colorChanger.style.color = randomColor;
+      };
+
+      changeColorWithRandom();
     </script>
   </body>
 </html>
